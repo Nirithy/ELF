@@ -11,6 +11,7 @@
 #include "elfparser/builder/components/sections/symbols/SymbolTableBuilder.h"
 #include "elfparser/builder/components/sections/dynamic/DynamicSectionBuilder.h"
 #include "elfparser/builder/components/sections/relocations/RelocationSectionBuilder.h"
+#include "elfparser/builder/components/segments/SegmentBuilder.h"
 #include "elfparser/io/BinaryWriter.h"
 #include "elfparser/common/Types.h"
 
@@ -37,6 +38,12 @@ namespace ElfParser::Builder {
         // Get the internal section header string table builder
         Components::StringTableBuilder& GetSectionHeaderStringTable();
 
+        // Add a segment (takes ownership)
+        void AddSegment(std::unique_ptr<Components::SegmentBuilder> segment);
+
+        // Create and return a segment builder of a specific type (managed by ElfBuilder)
+        Components::SegmentBuilder* CreateSegment(Model::ElfSegmentType type);
+
         // Compute layout and write to file
         Common::Result Build();
 
@@ -48,6 +55,9 @@ namespace ElfParser::Builder {
 
         // Sections
         std::vector<std::unique_ptr<Components::SectionBuilder>> m_sections;
+
+        // Segments
+        std::vector<std::unique_ptr<Components::SegmentBuilder>> m_segments;
 
         // Raw pointer to the .shstrtab section (owned by m_sections)
         Components::StringTableBuilder* m_shstrtabRef = nullptr;
