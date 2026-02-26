@@ -35,11 +35,6 @@ namespace ElfParser::Parser {
 
         // Section header string table raw data
         std::vector<char> m_shstrtab;
-
-        Common::Result ValidateHeader();
-        Common::Result ReadProgramHeaders();
-        Common::Result ReadSectionHeaders();
-        Common::Result ReadSectionNames();
     };
 
 }
