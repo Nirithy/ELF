@@ -9,6 +9,7 @@ namespace ElfParser::Model {
         PPC = 20,
         ARM = 40,
         X86_64 = 62,
-        AArch64 = 183
+        AArch64 = 183,
+        RISCV = 243
     };
 }

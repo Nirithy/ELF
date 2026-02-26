@@ -41,6 +41,28 @@ namespace ElfParser::Builder {
         m_sections.push_back(std::move(section));
     }
 
+    void ElfBuilder::RemoveSection(const std::string& name) {
+        for (auto it = m_sections.begin(); it != m_sections.end(); ++it) {
+            if (*it && (*it)->GetName() == name) {
+                // If we remove .shstrtab, we must clear the reference
+                if (it->get() == m_shstrtabRef) {
+                    m_shstrtabRef = nullptr;
+                }
+                m_sections.erase(it);
+                return;
+            }
+        }
+    }
+
+    Components::SectionBuilder* ElfBuilder::GetSection(const std::string& name) {
+        for (const auto& section : m_sections) {
+            if (section && section->GetName() == name) {
+                return section.get();
+            }
+        }
+        return nullptr;
+    }
+
     Components::StringTableBuilder& ElfBuilder::GetSectionHeaderStringTable() {
         return *m_shstrtabRef;
     }
