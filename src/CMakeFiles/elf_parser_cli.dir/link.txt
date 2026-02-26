@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/elf_parser_cli.dir/main.cpp.o -o ../bin/elf_parser_cli  ../lib/liblibelfparser.a
