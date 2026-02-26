@@ -22,6 +22,9 @@ set(LIB_SOURCES
     builder/components/headers/ShdrBuilder.cpp
     builder/components/sections/SectionBuilder.cpp
     builder/components/sections/StringTableBuilder.cpp
+    builder/components/sections/symbols/SymbolTableBuilder.cpp
+    builder/components/sections/dynamic/DynamicSectionBuilder.cpp
+    builder/components/sections/relocations/RelocationSectionBuilder.cpp
     builder/layout/LayoutManager.cpp
 )
 
