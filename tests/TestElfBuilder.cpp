@@ -1,5 +1,6 @@
 #include "TestFramework.h"
 #include "elfparser/builder/ElfBuilder.h"
+#include "elfparser/builder/components/segments/LoadSegmentBuilder.h"
 #include "elfparser/io/BinaryReader.h"
 #include "elfparser/model/ElfStructures.h"
 #include <fstream>
@@ -20,6 +21,13 @@ TEST_CASE(TestSimpleBuild) {
         // Add a dummy section
         auto strtab = std::make_unique<Builder::Components::StringTableBuilder>(".dynstr");
         strtab->AddString("func1");
+
+        // Add a segment covering the section
+        auto segment = std::make_unique<Builder::Components::LoadSegmentBuilder>();
+        segment->AddSection(strtab.get());
+        segment->SetFlags(4); // R
+        builder.AddSegment(std::move(segment));
+
         builder.AddSection(std::move(strtab));
 
         Common::Result res = builder.Build();

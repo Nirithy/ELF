@@ -3,6 +3,8 @@
 #include "elfparser/builder/components/sections/dynamic/DynamicSectionBuilder.h"
 #include "elfparser/builder/components/sections/relocations/RelocationSectionBuilder.h"
 #include "elfparser/builder/components/sections/strings/StringTableBuilder.h"
+#include "elfparser/builder/components/segments/LoadSegmentBuilder.h"
+#include "elfparser/builder/layout/LayoutManager.h"
 #include "elfparser/model/ElfStructures.h"
 #include <iostream>
 
@@ -106,3 +108,72 @@ void TestRelocationSectionBuilder() {
 struct TestRelocationSectionBuilder_Register {
     TestRelocationSectionBuilder_Register() { TestFramework::TestRunner::Get().AddTest("TestRelocationSectionBuilder", TestRelocationSectionBuilder); }
 } TestRelocationSectionBuilder_register_inst;
+
+
+// Mock Section Builder for testing
+class MockSectionBuilder : public ElfParser::Builder::Components::SectionBuilder {
+public:
+    MockSectionBuilder(const std::string& name, uint64_t size) {
+        SetName(name);
+        m_size = size;
+        m_header.sh_type = 1; // SHT_PROGBITS
+        m_header.sh_flags = 6; // AX
+        m_header.sh_addralign = 1;
+    }
+    ElfParser::Common::Result Write(ElfParser::IO::BinaryWriter&) override { return ElfParser::Common::Result::Ok(); }
+    uint64_t GetSize() const override { return m_size; }
+private:
+    uint64_t m_size;
+    ElfParser::Model::Elf64_Shdr m_header_storage{};
+};
+
+void TestSegmentBuilder() {
+    using namespace ElfParser::Builder;
+
+    // Create sections
+    auto sec1 = std::make_unique<MockSectionBuilder>(".text", 0x1000);
+    auto sec2 = std::make_unique<MockSectionBuilder>(".rodata", 0x500);
+
+    // Mock pointers needed for verification later
+    auto* pSec1 = sec1.get();
+    auto* pSec2 = sec2.get();
+
+    // Layout
+    Layout::LayoutManager layout(0x100); // Start at 0x100
+
+    std::vector<std::unique_ptr<Components::SegmentBuilder>> segs;
+
+    // Create Load Segment
+    segs.push_back(std::make_unique<Components::LoadSegmentBuilder>());
+    segs[0]->AddSection(pSec1);
+    segs[0]->AddSection(pSec2);
+
+    std::vector<std::unique_ptr<Components::SectionBuilder>> sections;
+    sections.push_back(std::move(sec1));
+    sections.push_back(std::move(sec2));
+
+    layout.ComputeLayout(segs, sections);
+
+    // Check Segment
+    const auto& hdr = segs[0]->GetHeader();
+
+    // Segment 1 (Load) aligns to 0x1000.
+    // 0x100 -> 0x1000.
+
+    // Sec1 at 0x1000. Size 0x1000. Ends 0x2000.
+    // Sec2 at 0x2000. Size 0x500. Ends 0x2500.
+
+    // Segment Offset 0x1000. FileSz 0x1500.
+
+    if (hdr.p_offset != 0x1000) {
+        std::cout << "Expected offset 0x1000, got " << std::hex << hdr.p_offset << std::dec << std::endl;
+        throw std::runtime_error("Segment offset incorrect");
+    }
+    if (hdr.p_filesz != 0x1500) {
+        std::cout << "Expected filesz 0x1500, got " << std::hex << hdr.p_filesz << std::dec << std::endl;
+        throw std::runtime_error("Segment filesz incorrect");
+    }
+}
+struct TestSegmentBuilder_Register {
+    TestSegmentBuilder_Register() { TestFramework::TestRunner::Get().AddTest("TestSegmentBuilder", TestSegmentBuilder); }
+} TestSegmentBuilder_register_inst;

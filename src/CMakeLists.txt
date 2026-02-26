@@ -30,6 +30,10 @@ set(LIB_SOURCES
     builder/components/sections/version/VersionDefinitionBuilder.cpp
     builder/components/sections/version/VersionRequirementBuilder.cpp
     builder/components/sections/relocations/RelocationSectionBuilder.cpp
+    builder/components/segments/SegmentBuilder.cpp
+    builder/components/segments/LoadSegmentBuilder.cpp
+    builder/components/segments/DynamicSegmentBuilder.cpp
+    builder/components/segments/NoteSegmentBuilder.cpp
     builder/layout/LayoutManager.cpp
     factory/SectionFactory.cpp
     factory/SegmentFactory.cpp

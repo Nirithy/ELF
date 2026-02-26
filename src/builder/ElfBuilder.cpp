@@ -1,5 +1,8 @@
 #include "elfparser/builder/ElfBuilder.h"
 #include "elfparser/builder/layout/LayoutManager.h"
+#include "elfparser/builder/components/segments/LoadSegmentBuilder.h"
+#include "elfparser/builder/components/segments/DynamicSegmentBuilder.h"
+#include "elfparser/builder/components/segments/NoteSegmentBuilder.h"
 #include "elfparser/utils/Logger.h"
 
 namespace ElfParser::Builder {
@@ -8,6 +11,9 @@ namespace ElfParser::Builder {
         : m_outputPath(outputPath) {
 
         // Ensure index 0 is reserved for SHT_NULL
+        // Typically handled by creating a dummy section or just logic in ShdrBuilder?
+        // Let's explicitly create a dummy section builder that writes nothing?
+        // Or simply add nullptr to m_sections as before.
         m_sections.push_back(nullptr);
 
         // Create .shstrtab
@@ -32,7 +38,6 @@ namespace ElfParser::Builder {
         if (!section) return;
 
         // Add section name to .shstrtab
-        // Note: For .shstrtab itself, this works because we set m_shstrtabRef before calling AddSection
         if (m_shstrtabRef) {
             uint32_t nameIdx = m_shstrtabRef->AddString(section->GetName());
             section->GetHeader().sh_name = nameIdx;
@@ -44,7 +49,6 @@ namespace ElfParser::Builder {
     void ElfBuilder::RemoveSection(const std::string& name) {
         for (auto it = m_sections.begin(); it != m_sections.end(); ++it) {
             if (*it && (*it)->GetName() == name) {
-                // If we remove .shstrtab, we must clear the reference
                 if (it->get() == m_shstrtabRef) {
                     m_shstrtabRef = nullptr;
                 }
@@ -67,6 +71,33 @@ namespace ElfParser::Builder {
         return *m_shstrtabRef;
     }
 
+    void ElfBuilder::AddSegment(std::unique_ptr<Components::SegmentBuilder> segment) {
+        if (segment) {
+            m_segments.push_back(std::move(segment));
+        }
+    }
+
+    Components::SegmentBuilder* ElfBuilder::CreateSegment(Model::ElfSegmentType type) {
+        std::unique_ptr<Components::SegmentBuilder> segment;
+        switch (type) {
+            case Model::ElfSegmentType::Load:
+                segment = std::make_unique<Components::LoadSegmentBuilder>();
+                break;
+            case Model::ElfSegmentType::Dynamic:
+                segment = std::make_unique<Components::DynamicSegmentBuilder>();
+                break;
+            case Model::ElfSegmentType::Note:
+                segment = std::make_unique<Components::NoteSegmentBuilder>();
+                break;
+            default:
+                segment = std::make_unique<Components::SegmentBuilder>(type);
+                break;
+        }
+        Components::SegmentBuilder* ptr = segment.get();
+        AddSegment(std::move(segment));
+        return ptr;
+    }
+
     Common::Result ElfBuilder::Build() {
         IO::BinaryWriter writer(m_outputPath);
         auto res = writer.Open();
@@ -80,35 +111,25 @@ namespace ElfParser::Builder {
 
         // Program Headers
         uint64_t phoff = layout.GetCurrentOffset();
-        if (m_phdrBuilder.GetCount() > 0) {
-            layout.Advance(m_phdrBuilder.GetSize());
+        uint64_t phnum = m_segments.size();
+
+        // If we have segments, reserve space for Phdrs
+        if (phnum > 0) {
+            layout.Advance(sizeof(Model::Elf64_Phdr) * phnum);
         } else {
-            phoff = 0;
+            phoff = 0; // No segments, no program headers usually
         }
 
-        // Sections
-        // We need to update each section's header with offset and size
-        for (size_t i = 1; i < m_sections.size(); ++i) {
-            auto& section = m_sections[i];
-
-            // Align
-            uint64_t align = section->GetHeader().sh_addralign;
-            layout.Align(align);
-
-            uint64_t offset = layout.GetCurrentOffset();
-            uint64_t size = section->GetSize();
-
-            section->UpdateHeader(offset, size);
-            layout.Advance(size);
-        }
+        // Compute Layout (Segments + Sections)
+        layout.ComputeLayout(m_segments, m_sections);
 
         // Section Headers
-        // Align for section headers (usually 8 bytes for 64-bit)
+        // Align for section headers
         layout.Align(8);
         uint64_t shoff = layout.GetCurrentOffset();
+        uint16_t shnum = static_cast<uint16_t>(m_sections.size());
 
         // 2. Finalize Elf Header
-        // Find shstrtab index
         uint16_t shstrndx = 0;
         for (size_t i = 0; i < m_sections.size(); ++i) {
             if (m_sections[i].get() == m_shstrtabRef) {
@@ -117,50 +138,38 @@ namespace ElfParser::Builder {
             }
         }
 
-        m_ehdrBuilder.UpdateLayout(
-            phoff,
-            m_phdrBuilder.GetCount(),
-            shoff,
-            static_cast<uint16_t>(m_sections.size()), // shnum includes NULL section
-            shstrndx
-        );
+        m_ehdrBuilder.UpdateLayout(phoff, phnum, shoff, shnum, shstrndx);
 
         // 3. Write Data
 
         // Write Elf Header
+        res = writer.Seek(0);
+        if (!res.IsOk()) return res;
         res = m_ehdrBuilder.Write(writer);
         if (!res.IsOk()) return res;
 
         // Write Program Headers
-        if (m_phdrBuilder.GetCount() > 0) {
+        if (phnum > 0) {
+            res = writer.Seek(phoff);
+            if (!res.IsOk()) return res;
+
+            // Populate temporary PhdrBuilder (or update member)
+            m_phdrBuilder = Components::PhdrBuilder(); // Clear/Reset
+            for (const auto& seg : m_segments) {
+                m_phdrBuilder.AddSegment(seg->GetHeader());
+            }
             res = m_phdrBuilder.Write(writer);
             if (!res.IsOk()) return res;
         }
 
         // Write Sections
-        // Current position in file should match layout logic
-        // We rely on LayoutManager's logic, but we need to actually write padding
-
-        // Reset layout tracker to track file writing position?
-        // Or just Tell() the writer.
-        // Writer should correspond to layout.
-
         for (size_t i = 1; i < m_sections.size(); ++i) {
             auto& section = m_sections[i];
+            if (!section) continue;
 
-            // Padding
-            uint64_t currentPos = static_cast<uint64_t>(writer.Tell());
-            uint64_t align = section->GetHeader().sh_addralign;
-            uint64_t padding = Layout::LayoutManager::CalculatePadding(currentPos, align);
-
-            res = writer.WritePadding(padding);
+            // Seek to calculated offset
+            res = writer.Seek(section->GetHeader().sh_offset);
             if (!res.IsOk()) return res;
-
-            // Verify offset matches calculated offset
-            if (static_cast<uint64_t>(writer.Tell()) != section->GetHeader().sh_offset) {
-                // This shouldn't happen if logic is consistent
-                return Common::Result::Fail(Common::StatusCode::WriteError, "Section offset mismatch during write.");
-            }
 
             // Write Content
             res = section->Write(writer);
@@ -168,42 +177,26 @@ namespace ElfParser::Builder {
         }
 
         // Write Section Headers
-        // Padding
-        uint64_t currentPos = static_cast<uint64_t>(writer.Tell());
-        uint64_t shdrPadding = Layout::LayoutManager::CalculatePadding(currentPos, 8);
-        res = writer.WritePadding(shdrPadding);
+        res = writer.Seek(shoff);
         if (!res.IsOk()) return res;
 
-        // Build Shdrs
-        // Clear existing (if any) and rebuild from m_sections
-        // Note: m_shdrBuilder might have been used manually?
-        // No, we should populate it from m_sections.
-        // But what if user added segments? m_phdrBuilder is separate.
+        // Populate ShdrBuilder
+        m_shdrBuilder = Components::ShdrBuilder(); // Reset
 
-        // We need to clear m_shdrBuilder and populate it.
-        // But m_shdrBuilder doesn't have Clear().
-        // Actually, we can just *add* to it?
-        // If the user manually added headers to m_shdrBuilder, we might duplicate.
-        // The design implies m_shdrBuilder is used *by* Build(), not pre-populated.
-        // But GetSectionHeaderBuilder() is public.
-        // Let's assume we construct a *new* list for writing, or clear it.
-        // Since ShdrBuilder doesn't have Clear, let's just make a local one?
-        // But PhdrBuilder and EhdrBuilder are members.
-
-        // Let's assume m_shdrBuilder is intended to be populated by Build() only.
-        // I will assume it's empty or I'll just use a local loop to write.
-
-        Components::ShdrBuilder finalShdrs;
-
-        // Add NULL section header
+        // Add NULL section header (index 0)
         Model::Elf64_Shdr nullShdr{};
-        finalShdrs.AddSection(nullShdr);
+        m_shdrBuilder.AddSection(nullShdr);
 
         for (size_t i = 1; i < m_sections.size(); ++i) {
-            finalShdrs.AddSection(m_sections[i]->GetHeader());
+            if (m_sections[i]) {
+                m_shdrBuilder.AddSection(m_sections[i]->GetHeader());
+            } else {
+                // Should not happen if m_sections[0] is the only null
+                m_shdrBuilder.AddSection(nullShdr);
+            }
         }
 
-        res = finalShdrs.Write(writer);
+        res = m_shdrBuilder.Write(writer);
         if (!res.IsOk()) return res;
 
         return Common::Result::Ok();
