@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/run_tests.dir/main_test.cpp.o CMakeFiles/run_tests.dir/TestElfParser.cpp.o CMakeFiles/run_tests.dir/TestElfBuilder.cpp.o CMakeFiles/run_tests.dir/TestBuilderComponents.cpp.o CMakeFiles/run_tests.dir/TestPlugins.cpp.o -o ../bin/run_tests  ../lib/liblibelfparser.a

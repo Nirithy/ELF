@@ -1,0 +1,13 @@
+Running 8 tests...
+[12:56:44] [INF] Parsing ELF file: test_elf.bin
+[12:56:44] [INF] Successfully parsed ELF file.
+[PASS] TestBasicElfParsing
+[PASS] TestSimpleBuild
+[PASS] TestSymbolTableBuilder
+[PASS] TestDynamicSectionBuilder
+[PASS] TestRelocationSectionBuilder
+[PASS] TestSegmentBuilder
+[PASS] TestPluginLifecycle
+[PASS] TestPluginEvent
+
+Results: 8 passed, 0 failed.

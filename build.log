@@ -1,0 +1,3 @@
+[ 88%] Built target libelfparser
+[ 91%] Built target elf_parser_cli
+[100%] Built target run_tests

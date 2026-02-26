@@ -3,12 +3,14 @@
 #include "elfparser/plugins/core/PluginContext.h"
 #include "elfparser/plugins/events/EventTypes.h"
 #include "elfparser/plugins/events/Event.h"
+#include "elfparser/plugins/registry/PluginRegistry.h"
 
 namespace ElfParser::Plugins {
 
     PluginManager::PluginManager()
         : m_eventDispatcher(std::make_shared<Events::EventDispatcher>())
         , m_context(std::make_unique<PluginContext>(m_eventDispatcher))
+        , m_staticLoader(std::make_unique<Loaders::StaticPluginLoader>())
     {
     }
 
@@ -18,15 +20,17 @@ namespace ElfParser::Plugins {
 
     Common::Result PluginManager::Initialize() {
         m_initialized = true;
+        // Load static plugins
+        m_staticLoader->Load();
         return Common::Result::Ok();
     }
 
-    Common::Result PluginManager::RegisterPlugin(std::unique_ptr<IPlugin> plugin) {
+    Common::Result PluginManager::RegisterPlugin(std::shared_ptr<IPlugin> plugin) {
         if (!plugin) {
             return Common::Result::Fail(Common::StatusCode::Error, "Plugin cannot be null");
         }
 
-        m_plugins.push_back(std::move(plugin));
+        Registry::PluginRegistry::GetInstance().RegisterPlugin(plugin);
         return Common::Result::Ok();
     }
 
@@ -35,7 +39,8 @@ namespace ElfParser::Plugins {
             return Common::Result::Fail(Common::StatusCode::Error, "PluginManager not initialized");
         }
 
-        for (auto& plugin : m_plugins) {
+        const auto& plugins = Registry::PluginRegistry::GetInstance().GetPlugins();
+        for (auto& plugin : plugins) {
             auto result = plugin->Initialize(*m_context);
             if (!result.IsOk()) {
                 // Log error but continue initializing other plugins? Or fail?
@@ -55,7 +60,12 @@ namespace ElfParser::Plugins {
             return Common::Result::Ok();
         }
 
-        for (auto it = m_plugins.rbegin(); it != m_plugins.rend(); ++it) {
+        const auto& plugins = Registry::PluginRegistry::GetInstance().GetPlugins();
+        // Shutdown in reverse order? The registry returns a reference to vector, we can iterate reverse.
+        // However, standard iteration is easiest. If dependencies exist, reverse might be needed.
+        // Let's copy to vector to reverse iterate safely if needed, or just reverse iterator.
+
+        for (auto it = plugins.rbegin(); it != plugins.rend(); ++it) {
             auto& plugin = *it;
             plugin->Shutdown();
 
@@ -63,13 +73,18 @@ namespace ElfParser::Plugins {
             m_eventDispatcher->Dispatch(Events::Event(Events::EventType::PluginUnloaded, plugin->GetInfo().name));
         }
 
-        m_plugins.clear();
+        // We don't clear the registry here because PluginManager doesn't own the registry.
+        // But maybe we should? The registry is a singleton.
+        // If we want to fully reset, we might need a Clear() method on Registry.
+        // For now, just shutting down plugins is enough.
+
         m_initialized = false;
         return Common::Result::Ok();
     }
 
     IPlugin* PluginManager::GetPlugin(const std::string& name) {
-        for (const auto& plugin : m_plugins) {
+        const auto& plugins = Registry::PluginRegistry::GetInstance().GetPlugins();
+        for (const auto& plugin : plugins) {
             if (plugin->GetInfo().name == name) {
                 return plugin.get();
             }

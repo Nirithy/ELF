@@ -181,9 +181,63 @@
 },
 {
   "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/SegmentBuilder.cpp.o -c /app/src/builder/components/segments/SegmentBuilder.cpp",
+  "file": "/app/src/builder/components/segments/SegmentBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/SegmentBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/LoadSegmentBuilder.cpp.o -c /app/src/builder/components/segments/LoadSegmentBuilder.cpp",
+  "file": "/app/src/builder/components/segments/LoadSegmentBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/LoadSegmentBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/DynamicSegmentBuilder.cpp.o -c /app/src/builder/components/segments/DynamicSegmentBuilder.cpp",
+  "file": "/app/src/builder/components/segments/DynamicSegmentBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/DynamicSegmentBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/NoteSegmentBuilder.cpp.o -c /app/src/builder/components/segments/NoteSegmentBuilder.cpp",
+  "file": "/app/src/builder/components/segments/NoteSegmentBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/NoteSegmentBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
   "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/layout/LayoutManager.cpp.o -c /app/src/builder/layout/LayoutManager.cpp",
   "file": "/app/src/builder/layout/LayoutManager.cpp",
   "output": "src/CMakeFiles/libelfparser.dir/builder/layout/LayoutManager.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/layout/strategies/DefaultLayoutStrategy.cpp.o -c /app/src/builder/layout/strategies/DefaultLayoutStrategy.cpp",
+  "file": "/app/src/builder/layout/strategies/DefaultLayoutStrategy.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/layout/strategies/DefaultLayoutStrategy.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/layout/strategies/CompactLayoutStrategy.cpp.o -c /app/src/builder/layout/strategies/CompactLayoutStrategy.cpp",
+  "file": "/app/src/builder/layout/strategies/CompactLayoutStrategy.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/layout/strategies/CompactLayoutStrategy.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/calculators/DefaultSegmentCalculator.cpp.o -c /app/src/builder/components/segments/calculators/DefaultSegmentCalculator.cpp",
+  "file": "/app/src/builder/components/segments/calculators/DefaultSegmentCalculator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/calculators/DefaultSegmentCalculator.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/calculators/LoadSegmentCalculator.cpp.o -c /app/src/builder/components/segments/calculators/LoadSegmentCalculator.cpp",
+  "file": "/app/src/builder/components/segments/calculators/LoadSegmentCalculator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/calculators/LoadSegmentCalculator.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/segments/calculators/DynamicSegmentCalculator.cpp.o -c /app/src/builder/components/segments/calculators/DynamicSegmentCalculator.cpp",
+  "file": "/app/src/builder/components/segments/calculators/DynamicSegmentCalculator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/segments/calculators/DynamicSegmentCalculator.cpp.o"
 },
 {
   "directory": "/app/src",
@@ -283,6 +337,36 @@
 },
 {
   "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/plugins/core/PluginManager.cpp.o -c /app/src/plugins/core/PluginManager.cpp",
+  "file": "/app/src/plugins/core/PluginManager.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/plugins/core/PluginManager.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/plugins/core/PluginContext.cpp.o -c /app/src/plugins/core/PluginContext.cpp",
+  "file": "/app/src/plugins/core/PluginContext.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/plugins/core/PluginContext.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/plugins/events/EventDispatcher.cpp.o -c /app/src/plugins/events/EventDispatcher.cpp",
+  "file": "/app/src/plugins/events/EventDispatcher.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/plugins/events/EventDispatcher.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/plugins/registry/PluginRegistry.cpp.o -c /app/src/plugins/registry/PluginRegistry.cpp",
+  "file": "/app/src/plugins/registry/PluginRegistry.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/plugins/registry/PluginRegistry.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/plugins/loaders/StaticPluginLoader.cpp.o -c /app/src/plugins/loaders/StaticPluginLoader.cpp",
+  "file": "/app/src/plugins/loaders/StaticPluginLoader.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/plugins/loaders/StaticPluginLoader.cpp.o"
+},
+{
+  "directory": "/app/src",
   "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/elf_parser_cli.dir/main.cpp.o -c /app/src/main.cpp",
   "file": "/app/src/main.cpp",
   "output": "src/CMakeFiles/elf_parser_cli.dir/main.cpp.o"
@@ -310,5 +394,11 @@
   "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/TestBuilderComponents.cpp.o -c /app/tests/TestBuilderComponents.cpp",
   "file": "/app/tests/TestBuilderComponents.cpp",
   "output": "tests/CMakeFiles/run_tests.dir/TestBuilderComponents.cpp.o"
+},
+{
+  "directory": "/app/tests",
+  "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/TestPlugins.cpp.o -c /app/tests/TestPlugins.cpp",
+  "file": "/app/tests/TestPlugins.cpp",
+  "output": "tests/CMakeFiles/run_tests.dir/TestPlugins.cpp.o"
 }
 ]

@@ -59,6 +59,8 @@ set(LIB_SOURCES
     plugins/core/PluginManager.cpp
     plugins/core/PluginContext.cpp
     plugins/events/EventDispatcher.cpp
+    plugins/registry/PluginRegistry.cpp
+    plugins/loaders/StaticPluginLoader.cpp
 )
 
 # Create the core library
