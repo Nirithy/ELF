@@ -143,4 +143,67 @@ namespace ElfParser::Utils {
         rela.r_info = Swap(rela.r_info);
         rela.r_addend = Swap(rela.r_addend);
     }
+
+    // --- Elf32_Nhdr ---
+    inline void Swap(Model::Elf32_Nhdr& nhdr) {
+        nhdr.n_namesz = Swap(nhdr.n_namesz);
+        nhdr.n_descsz = Swap(nhdr.n_descsz);
+        nhdr.n_type = Swap(nhdr.n_type);
+    }
+
+    // --- Elf64_Nhdr ---
+    inline void Swap(Model::Elf64_Nhdr& nhdr) {
+        nhdr.n_namesz = Swap(nhdr.n_namesz);
+        nhdr.n_descsz = Swap(nhdr.n_descsz);
+        nhdr.n_type = Swap(nhdr.n_type);
+    }
+
+    // --- Elf_Hash ---
+    inline void Swap(Model::Elf_Hash& hash) {
+        hash.nbucket = Swap(hash.nbucket);
+        hash.nchain = Swap(hash.nchain);
+    }
+
+    // --- Elf_GnuHash ---
+    inline void Swap(Model::Elf_GnuHash& gnuHash) {
+        gnuHash.nbuckets = Swap(gnuHash.nbuckets);
+        gnuHash.symndx = Swap(gnuHash.symndx);
+        gnuHash.maskwords = Swap(gnuHash.maskwords);
+        gnuHash.shift2 = Swap(gnuHash.shift2);
+    }
+
+    // --- Elf_Verdef ---
+    inline void Swap(Model::Elf_Verdef& verdef) {
+        verdef.vd_version = Swap(verdef.vd_version);
+        verdef.vd_flags = Swap(verdef.vd_flags);
+        verdef.vd_ndx = Swap(verdef.vd_ndx);
+        verdef.vd_cnt = Swap(verdef.vd_cnt);
+        verdef.vd_hash = Swap(verdef.vd_hash);
+        verdef.vd_aux = Swap(verdef.vd_aux);
+        verdef.vd_next = Swap(verdef.vd_next);
+    }
+
+    // --- Elf_Verdaux ---
+    inline void Swap(Model::Elf_Verdaux& verdaux) {
+        verdaux.vda_name = Swap(verdaux.vda_name);
+        verdaux.vda_next = Swap(verdaux.vda_next);
+    }
+
+    // --- Elf_Verneed ---
+    inline void Swap(Model::Elf_Verneed& verneed) {
+        verneed.vn_version = Swap(verneed.vn_version);
+        verneed.vn_cnt = Swap(verneed.vn_cnt);
+        verneed.vn_file = Swap(verneed.vn_file);
+        verneed.vn_aux = Swap(verneed.vn_aux);
+        verneed.vn_next = Swap(verneed.vn_next);
+    }
+
+    // --- Elf_Vernaux ---
+    inline void Swap(Model::Elf_Vernaux& vernaux) {
+        vernaux.vna_hash = Swap(vernaux.vna_hash);
+        vernaux.vna_flags = Swap(vernaux.vna_flags);
+        vernaux.vna_other = Swap(vernaux.vna_other);
+        vernaux.vna_name = Swap(vernaux.vna_name);
+        vernaux.vna_next = Swap(vernaux.vna_next);
+    }
 }
