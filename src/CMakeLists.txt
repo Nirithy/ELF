@@ -31,6 +31,8 @@ set(LIB_SOURCES
     builder/components/sections/version/VersionRequirementBuilder.cpp
     builder/components/sections/relocations/RelocationSectionBuilder.cpp
     builder/layout/LayoutManager.cpp
+    factory/SectionFactory.cpp
+    factory/SegmentFactory.cpp
 )
 
 # Create the core library
