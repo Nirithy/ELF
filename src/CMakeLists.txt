@@ -21,9 +21,14 @@ set(LIB_SOURCES
     builder/components/headers/PhdrBuilder.cpp
     builder/components/headers/ShdrBuilder.cpp
     builder/components/sections/SectionBuilder.cpp
-    builder/components/sections/StringTableBuilder.cpp
+    builder/components/sections/strings/StringTableBuilder.cpp
     builder/components/sections/symbols/SymbolTableBuilder.cpp
     builder/components/sections/dynamic/DynamicSectionBuilder.cpp
+    builder/components/sections/hash/HashSectionBuilder.cpp
+    builder/components/sections/hash/GnuHashSectionBuilder.cpp
+    builder/components/sections/notes/NoteSectionBuilder.cpp
+    builder/components/sections/version/VersionDefinitionBuilder.cpp
+    builder/components/sections/version/VersionRequirementBuilder.cpp
     builder/components/sections/relocations/RelocationSectionBuilder.cpp
     builder/layout/LayoutManager.cpp
 )

@@ -7,7 +7,7 @@
 #include "elfparser/builder/components/headers/PhdrBuilder.h"
 #include "elfparser/builder/components/headers/ShdrBuilder.h"
 #include "elfparser/builder/components/sections/SectionBuilder.h"
-#include "elfparser/builder/components/sections/StringTableBuilder.h"
+#include "elfparser/builder/components/sections/strings/StringTableBuilder.h"
 #include "elfparser/builder/components/sections/symbols/SymbolTableBuilder.h"
 #include "elfparser/builder/components/sections/dynamic/DynamicSectionBuilder.h"
 #include "elfparser/builder/components/sections/relocations/RelocationSectionBuilder.h"

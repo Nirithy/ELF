@@ -1,4 +1,4 @@
-#include "elfparser/builder/components/sections/StringTableBuilder.h"
+#include "elfparser/builder/components/sections/strings/StringTableBuilder.h"
 
 namespace ElfParser::Builder::Components {
 
