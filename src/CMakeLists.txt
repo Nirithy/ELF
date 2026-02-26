@@ -9,6 +9,12 @@ set(LIB_SOURCES
     parser/components/sections/SymbolTableParser.cpp
     parser/components/sections/DynamicSectionParser.cpp
     parser/components/sections/RelocationSectionParser.cpp
+    parser/components/sections/notes/NoteSectionParser.cpp
+    parser/components/sections/hash/HashSectionParser.cpp
+    parser/components/sections/hash/GnuHashSectionParser.cpp
+    parser/components/sections/version/VersionDefinitionParser.cpp
+    parser/components/sections/version/VersionRequirementParser.cpp
+    parser/components/sections/strings/StringTableParser.cpp
 )
 
 # Create the core library
