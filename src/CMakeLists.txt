@@ -56,6 +56,9 @@ set(LIB_SOURCES
     validator/components/ShdrValidator.cpp
     transform/actions/StripSymbolsAction.cpp
     transform/actions/RemoveSectionAction.cpp
+    plugins/core/PluginManager.cpp
+    plugins/core/PluginContext.cpp
+    plugins/events/EventDispatcher.cpp
 )
 
 # Create the core library
