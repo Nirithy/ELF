@@ -1,6 +1,7 @@
 add_executable(run_tests
     main_test.cpp
     TestElfParser.cpp
+    TestElfBuilder.cpp
 )
 
 target_include_directories(run_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

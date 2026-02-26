@@ -6,12 +6,26 @@
 #include "elfparser/model/enums/ElfOsAbi.h"
 #include "elfparser/model/enums/ElfType.h"
 #include "elfparser/model/enums/ElfMachine.h"
+#include "elfparser/model/enums/ElfVersion.h"
 
 namespace ElfParser::Model {
 
     // ELF Magic
     constexpr unsigned char ELFMAG[] = { 0x7f, 'E', 'L', 'F' };
     constexpr int SELFMAG = 4;
+
+    // e_ident indices
+    constexpr int EI_MAG0 = 0;
+    constexpr int EI_MAG1 = 1;
+    constexpr int EI_MAG2 = 2;
+    constexpr int EI_MAG3 = 3;
+    constexpr int EI_CLASS = 4;
+    constexpr int EI_DATA = 5;
+    constexpr int EI_VERSION = 6;
+    constexpr int EI_OSABI = 7;
+    constexpr int EI_ABIVERSION = 8;
+    constexpr int EI_PAD = 9;
+    constexpr int EI_NIDENT = 16;
 
     #pragma pack(push, 1)
 
