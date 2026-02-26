@@ -2,7 +2,7 @@
 #include "elfparser/builder/components/sections/symbols/SymbolTableBuilder.h"
 #include "elfparser/builder/components/sections/dynamic/DynamicSectionBuilder.h"
 #include "elfparser/builder/components/sections/relocations/RelocationSectionBuilder.h"
-#include "elfparser/builder/components/sections/StringTableBuilder.h"
+#include "elfparser/builder/components/sections/strings/StringTableBuilder.h"
 #include "elfparser/model/ElfStructures.h"
 #include <iostream>
 

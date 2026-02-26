@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include "elfparser/builder/components/sections/SectionBuilder.h"
-#include "elfparser/builder/components/sections/StringTableBuilder.h"
+#include "elfparser/builder/components/sections/strings/StringTableBuilder.h"
 #include "elfparser/model/ElfStructures.h"
 
 namespace ElfParser::Builder::Components {
