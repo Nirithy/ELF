@@ -3,7 +3,9 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <type_traits>
 #include "elfparser/common/Types.h"
+#include "elfparser/utils/Endian.h"
 
 namespace ElfParser::IO {
 
@@ -19,13 +21,28 @@ namespace ElfParser::IO {
         bool Open();
         void Close();
 
+        // Set the expected endianness of the file.
+        // If it differs from the host system, Read<T> will swap bytes.
+        void SetLittleEndian(bool isLittleEndian);
+
+        // Check if swapping is enabled
+        bool ShouldSwap() const { return m_shouldSwap; }
+
         // Read raw bytes into a buffer
         bool Read(void* buffer, std::streamsize size);
 
-        // Template to read primitive types directly
+        // Template to read primitive types directly with automatic endian swapping
         template<typename T>
         bool Read(T& value) {
-            return Read(&value, sizeof(T));
+            if (!Read(&value, sizeof(T))) {
+                return false;
+            }
+            if (m_shouldSwap) {
+                if constexpr (std::is_arithmetic<T>::value) {
+                    value = Utils::Swap(value);
+                }
+            }
+            return true;
         }
 
         // Seek to an absolute position
@@ -44,6 +61,7 @@ namespace ElfParser::IO {
         std::string m_filepath;
         std::ifstream m_stream;
         std::streamsize m_fileSize;
+        bool m_shouldSwap = false;
     };
 
 }

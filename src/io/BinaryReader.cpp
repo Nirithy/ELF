@@ -29,6 +29,10 @@ namespace ElfParser::IO {
         }
     }
 
+    void BinaryReader::SetLittleEndian(bool isLittleEndian) {
+        m_shouldSwap = (isLittleEndian != Utils::IsLittleEndian());
+    }
+
     bool BinaryReader::Read(void* buffer, std::streamsize size) {
         if (!m_stream.is_open()) {
             Utils::Logger::Error("Attempted to read from closed file.");
