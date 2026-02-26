@@ -7,10 +7,7 @@ namespace ElfParser::Builder::Components {
     class LoadSegmentBuilder : public SegmentBuilder {
     public:
         LoadSegmentBuilder();
-
-        // Load segments enforce alignment strictly.
-        // This override might add padding logic if LayoutManager delegates it.
-        void Finalize(Layout::LayoutManager& layout) override;
+        // Uses LoadSegmentCalculator initialized in constructor.
     };
 
 }

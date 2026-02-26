@@ -1,15 +1,14 @@
 #include "elfparser/builder/components/segments/DynamicSegmentBuilder.h"
+#include "elfparser/builder/components/segments/calculators/DynamicSegmentCalculator.h"
 
 namespace ElfParser::Builder::Components {
 
     DynamicSegmentBuilder::DynamicSegmentBuilder()
         : SegmentBuilder(Model::ElfSegmentType::Dynamic) {
-        SetAlign(0x8); // Often 8-byte aligned
+        SetAlign(0x8);
         SetFlags(0x6); // R | W
-    }
 
-    void DynamicSegmentBuilder::Finalize(Layout::LayoutManager& layout) {
-        SegmentBuilder::Finalize(layout);
+        SetCalculator(std::make_unique<Segments::Calculators::DynamicSegmentCalculator>());
     }
 
 }
