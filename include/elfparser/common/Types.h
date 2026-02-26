@@ -19,6 +19,7 @@ namespace ElfParser::Common {
         InvalidFormat,
         OutOfBounds,
         ReadError,
+        WriteError,
         NotImplemented
     };
 
