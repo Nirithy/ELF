@@ -1,4 +1,4 @@
-#include "elfparser/parser/components/sections/RelocationSectionParser.h"
+#include "elfparser/parser/components/sections/relocations/RelocationSectionParser.h"
 #include "elfparser/utils/ElfSwap.h"
 
 namespace ElfParser::Parser::Components {

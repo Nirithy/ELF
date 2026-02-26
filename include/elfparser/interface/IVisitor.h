@@ -7,6 +7,9 @@ namespace ElfParser::Interface {
     class ISymbol;
     class IRelocation;
     class IDynamicEntry;
+    class INote;
+    class IVersionDefinition;
+    class IVersionRequirement;
     class INode;
 
     /**
@@ -22,6 +25,9 @@ namespace ElfParser::Interface {
         virtual void Visit(ISymbol& symbol) = 0;
         virtual void Visit(IRelocation& relocation) = 0;
         virtual void Visit(IDynamicEntry& dynamicEntry) = 0;
+        virtual void Visit(INote& note) = 0;
+        virtual void Visit(IVersionDefinition& verDef) = 0;
+        virtual void Visit(IVersionRequirement& verReq) = 0;
 
         // Fallback or generic visit if needed
         virtual void Visit(INode& node) = 0;
