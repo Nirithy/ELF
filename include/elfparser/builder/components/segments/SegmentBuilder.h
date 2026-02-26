@@ -7,12 +7,17 @@
 #include "elfparser/builder/components/sections/SectionBuilder.h"
 #include "elfparser/builder/layout/LayoutManager.h"
 
+// Forward declaration
+namespace ElfParser::Builder::Components::Segments::Calculators {
+    class ISegmentCalculator;
+}
+
 namespace ElfParser::Builder::Components {
 
     class SegmentBuilder {
     public:
         explicit SegmentBuilder(Model::ElfSegmentType type);
-        virtual ~SegmentBuilder() = default;
+        virtual ~SegmentBuilder();
 
         // Configuration
         void SetFlags(uint32_t flags);
@@ -26,6 +31,9 @@ namespace ElfParser::Builder::Components {
         void AddSection(SectionBuilder* section);
         const std::vector<SectionBuilder*>& GetSections() const;
 
+        // Calculator Management
+        void SetCalculator(std::unique_ptr<Segments::Calculators::ISegmentCalculator> calculator);
+
         // Layout Calculation
         // Computes the size and offset based on sections if applicable.
         // Returns the final segment header.
@@ -33,11 +41,13 @@ namespace ElfParser::Builder::Components {
 
         // Accessors
         const Model::Elf64_Phdr& GetHeader() const;
+        Model::Elf64_Phdr& GetHeaderRef(); // Mutable accessor for calculators
         Model::ElfSegmentType GetType() const;
 
     protected:
         Model::Elf64_Phdr m_header{};
         std::vector<SectionBuilder*> m_sections;
+        std::unique_ptr<Segments::Calculators::ISegmentCalculator> m_calculator;
     };
 
 }

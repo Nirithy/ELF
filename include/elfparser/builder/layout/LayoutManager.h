@@ -13,9 +13,14 @@ namespace ElfParser::Builder::Components {
 
 namespace ElfParser::Builder::Layout {
 
+    namespace Strategies {
+        class ILayoutStrategy;
+    }
+
     class LayoutManager {
     public:
         explicit LayoutManager(uint64_t startOffset = 0);
+        ~LayoutManager(); // Required for unique_ptr to forward declared type
 
         // Aligns the current offset to the given alignment
         // Returns the number of padding bytes added.
@@ -27,9 +32,10 @@ namespace ElfParser::Builder::Layout {
         // Advances the offset by size
         void Advance(uint64_t size);
 
-        // Computes the layout for segments and sections
-        // 1. Places segments (and their contained sections).
-        // 2. Places remaining sections that are not in any segment.
+        // Set a custom layout strategy
+        void SetStrategy(std::unique_ptr<Strategies::ILayoutStrategy> strategy);
+
+        // Computes the layout for segments and sections using the current strategy
         void ComputeLayout(
             std::vector<std::unique_ptr<Components::SegmentBuilder>>& segments,
             std::vector<std::unique_ptr<Components::SectionBuilder>>& sections
@@ -40,6 +46,7 @@ namespace ElfParser::Builder::Layout {
 
     private:
         uint64_t m_currentOffset;
+        std::unique_ptr<Strategies::ILayoutStrategy> m_strategy;
     };
 
 }

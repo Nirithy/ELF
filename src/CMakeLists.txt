@@ -35,6 +35,11 @@ set(LIB_SOURCES
     builder/components/segments/DynamicSegmentBuilder.cpp
     builder/components/segments/NoteSegmentBuilder.cpp
     builder/layout/LayoutManager.cpp
+    builder/layout/strategies/DefaultLayoutStrategy.cpp
+    builder/layout/strategies/CompactLayoutStrategy.cpp
+    builder/components/segments/calculators/DefaultSegmentCalculator.cpp
+    builder/components/segments/calculators/LoadSegmentCalculator.cpp
+    builder/components/segments/calculators/DynamicSegmentCalculator.cpp
     factory/SectionFactory.cpp
     factory/SegmentFactory.cpp
     factory/SymbolFactory.cpp
