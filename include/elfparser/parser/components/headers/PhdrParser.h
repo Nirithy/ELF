@@ -7,9 +7,8 @@
 
 namespace ElfParser::Parser::Components {
 
-    class SegmentParser {
+    class PhdrParser {
     public:
-        // Reads all program headers from the file.
         Common::Result ParseHeaders(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, std::vector<Model::Elf64_Phdr>& segments);
     };
 

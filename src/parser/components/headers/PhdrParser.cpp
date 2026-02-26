@@ -1,10 +1,10 @@
-#include "elfparser/parser/components/SegmentParser.h"
+#include "elfparser/parser/components/headers/PhdrParser.h"
 #include "elfparser/utils/ElfSwap.h"
 #include <string>
 
 namespace ElfParser::Parser::Components {
 
-    Common::Result SegmentParser::ParseHeaders(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, std::vector<Model::Elf64_Phdr>& segments) {
+    Common::Result PhdrParser::ParseHeaders(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, std::vector<Model::Elf64_Phdr>& segments) {
         if (header.e_phoff == 0 || header.e_phnum == 0) {
             segments.clear();
             return Common::Result::Ok();

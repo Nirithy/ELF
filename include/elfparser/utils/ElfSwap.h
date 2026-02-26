@@ -4,6 +4,24 @@
 
 namespace ElfParser::Utils {
 
+    // --- Elf32_Ehdr ---
+    inline void Swap(Model::Elf32_Ehdr& header) {
+        header.e_type = Swap(header.e_type);
+        header.e_machine = Swap(header.e_machine);
+        header.e_version = Swap(header.e_version);
+        header.e_entry = Swap(header.e_entry);
+        header.e_phoff = Swap(header.e_phoff);
+        header.e_shoff = Swap(header.e_shoff);
+        header.e_flags = Swap(header.e_flags);
+        header.e_ehsize = Swap(header.e_ehsize);
+        header.e_phentsize = Swap(header.e_phentsize);
+        header.e_phnum = Swap(header.e_phnum);
+        header.e_shentsize = Swap(header.e_shentsize);
+        header.e_shnum = Swap(header.e_shnum);
+        header.e_shstrndx = Swap(header.e_shstrndx);
+    }
+
+    // --- Elf64_Ehdr ---
     inline void Swap(Model::Elf64_Ehdr& header) {
         header.e_type = Swap(header.e_type);
         header.e_machine = Swap(header.e_machine);
@@ -20,6 +38,19 @@ namespace ElfParser::Utils {
         header.e_shstrndx = Swap(header.e_shstrndx);
     }
 
+    // --- Elf32_Phdr ---
+    inline void Swap(Model::Elf32_Phdr& phdr) {
+        phdr.p_type = Swap(phdr.p_type);
+        phdr.p_offset = Swap(phdr.p_offset);
+        phdr.p_vaddr = Swap(phdr.p_vaddr);
+        phdr.p_paddr = Swap(phdr.p_paddr);
+        phdr.p_filesz = Swap(phdr.p_filesz);
+        phdr.p_memsz = Swap(phdr.p_memsz);
+        phdr.p_flags = Swap(phdr.p_flags);
+        phdr.p_align = Swap(phdr.p_align);
+    }
+
+    // --- Elf64_Phdr ---
     inline void Swap(Model::Elf64_Phdr& phdr) {
         phdr.p_type = Swap(phdr.p_type);
         phdr.p_flags = Swap(phdr.p_flags);
@@ -31,6 +62,21 @@ namespace ElfParser::Utils {
         phdr.p_align = Swap(phdr.p_align);
     }
 
+    // --- Elf32_Shdr ---
+    inline void Swap(Model::Elf32_Shdr& shdr) {
+        shdr.sh_name = Swap(shdr.sh_name);
+        shdr.sh_type = Swap(shdr.sh_type);
+        shdr.sh_flags = Swap(shdr.sh_flags);
+        shdr.sh_addr = Swap(shdr.sh_addr);
+        shdr.sh_offset = Swap(shdr.sh_offset);
+        shdr.sh_size = Swap(shdr.sh_size);
+        shdr.sh_link = Swap(shdr.sh_link);
+        shdr.sh_info = Swap(shdr.sh_info);
+        shdr.sh_addralign = Swap(shdr.sh_addralign);
+        shdr.sh_entsize = Swap(shdr.sh_entsize);
+    }
+
+    // --- Elf64_Shdr ---
     inline void Swap(Model::Elf64_Shdr& shdr) {
         shdr.sh_name = Swap(shdr.sh_name);
         shdr.sh_type = Swap(shdr.sh_type);
@@ -42,5 +88,59 @@ namespace ElfParser::Utils {
         shdr.sh_info = Swap(shdr.sh_info);
         shdr.sh_addralign = Swap(shdr.sh_addralign);
         shdr.sh_entsize = Swap(shdr.sh_entsize);
+    }
+
+    // --- Elf32_Sym ---
+    inline void Swap(Model::Elf32_Sym& sym) {
+        sym.st_name = Swap(sym.st_name);
+        sym.st_value = Swap(sym.st_value);
+        sym.st_size = Swap(sym.st_size);
+        sym.st_shndx = Swap(sym.st_shndx);
+    }
+
+    // --- Elf64_Sym ---
+    inline void Swap(Model::Elf64_Sym& sym) {
+        sym.st_name = Swap(sym.st_name);
+        sym.st_shndx = Swap(sym.st_shndx);
+        sym.st_value = Swap(sym.st_value);
+        sym.st_size = Swap(sym.st_size);
+    }
+
+    // --- Elf32_Dyn ---
+    inline void Swap(Model::Elf32_Dyn& dyn) {
+        dyn.d_tag = Swap(dyn.d_tag);
+        dyn.d_un.d_val = Swap(dyn.d_un.d_val);
+    }
+
+    // --- Elf64_Dyn ---
+    inline void Swap(Model::Elf64_Dyn& dyn) {
+        dyn.d_tag = Swap(dyn.d_tag);
+        dyn.d_un.d_val = Swap(dyn.d_un.d_val);
+    }
+
+    // --- Elf32_Rel ---
+    inline void Swap(Model::Elf32_Rel& rel) {
+        rel.r_offset = Swap(rel.r_offset);
+        rel.r_info = Swap(rel.r_info);
+    }
+
+    // --- Elf32_Rela ---
+    inline void Swap(Model::Elf32_Rela& rela) {
+        rela.r_offset = Swap(rela.r_offset);
+        rela.r_info = Swap(rela.r_info);
+        rela.r_addend = Swap(rela.r_addend);
+    }
+
+    // --- Elf64_Rel ---
+    inline void Swap(Model::Elf64_Rel& rel) {
+        rel.r_offset = Swap(rel.r_offset);
+        rel.r_info = Swap(rel.r_info);
+    }
+
+    // --- Elf64_Rela ---
+    inline void Swap(Model::Elf64_Rela& rela) {
+        rela.r_offset = Swap(rela.r_offset);
+        rela.r_info = Swap(rela.r_info);
+        rela.r_addend = Swap(rela.r_addend);
     }
 }
