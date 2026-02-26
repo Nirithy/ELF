@@ -14,11 +14,13 @@ namespace ElfParser::Model::Impl {
         uint64_t GetOffset() const override { return m_rela.r_offset; }
         void SetOffset(uint64_t offset) override { m_rela.r_offset = offset; }
 
-        uint64_t GetInfo() const override { return m_rela.r_info; }
-        void SetInfo(uint64_t info) override { m_rela.r_info = info; }
+        uint64_t GetInfo() const { return m_rela.r_info; }
+        void SetInfo(uint64_t info) { m_rela.r_info = info; }
 
         int64_t GetAddend() const override { return m_rela.r_addend; }
         void SetAddend(int64_t addend) override { m_rela.r_addend = addend; }
+
+        bool IsRela() const override { return true; }
 
         uint32_t GetType() const override {
             return static_cast<uint32_t>(m_rela.r_info & 0xFFFFFFFFL);

@@ -38,6 +38,15 @@ set(LIB_SOURCES
     factory/DynamicEntryFactory.cpp
     factory/NoteFactory.cpp
     factory/VersionFactory.cpp
+    arch/ArchFactory.cpp
+    arch/x86_64/X86_64Handler.cpp
+    arch/aarch64/AArch64Handler.cpp
+    arch/riscv/RiscvHandler.cpp
+    validator/components/EhdrValidator.cpp
+    validator/components/PhdrValidator.cpp
+    validator/components/ShdrValidator.cpp
+    transform/actions/StripSymbolsAction.cpp
+    transform/actions/RemoveSectionAction.cpp
 )
 
 # Create the core library

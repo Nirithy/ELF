@@ -28,6 +28,12 @@ namespace ElfParser::Builder {
         // Add a section (takes ownership)
         void AddSection(std::unique_ptr<Components::SectionBuilder> section);
 
+        // Remove a section by name
+        void RemoveSection(const std::string& name);
+
+        // Get a section by name
+        Components::SectionBuilder* GetSection(const std::string& name);
+
         // Get the internal section header string table builder
         Components::StringTableBuilder& GetSectionHeaderStringTable();
 

@@ -1,0 +1,314 @@
+[
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/utils/Logger.cpp.o -c /app/src/utils/Logger.cpp",
+  "file": "/app/src/utils/Logger.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/utils/Logger.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/io/BinaryReader.cpp.o -c /app/src/io/BinaryReader.cpp",
+  "file": "/app/src/io/BinaryReader.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/io/BinaryReader.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/io/BinaryWriter.cpp.o -c /app/src/io/BinaryWriter.cpp",
+  "file": "/app/src/io/BinaryWriter.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/io/BinaryWriter.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/ElfParser.cpp.o -c /app/src/parser/ElfParser.cpp",
+  "file": "/app/src/parser/ElfParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/ElfParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/headers/EhdrParser.cpp.o -c /app/src/parser/components/headers/EhdrParser.cpp",
+  "file": "/app/src/parser/components/headers/EhdrParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/headers/EhdrParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/headers/PhdrParser.cpp.o -c /app/src/parser/components/headers/PhdrParser.cpp",
+  "file": "/app/src/parser/components/headers/PhdrParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/headers/PhdrParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/headers/ShdrParser.cpp.o -c /app/src/parser/components/headers/ShdrParser.cpp",
+  "file": "/app/src/parser/components/headers/ShdrParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/headers/ShdrParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/symbols/SymbolTableParser.cpp.o -c /app/src/parser/components/sections/symbols/SymbolTableParser.cpp",
+  "file": "/app/src/parser/components/sections/symbols/SymbolTableParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/symbols/SymbolTableParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/dynamic/DynamicSectionParser.cpp.o -c /app/src/parser/components/sections/dynamic/DynamicSectionParser.cpp",
+  "file": "/app/src/parser/components/sections/dynamic/DynamicSectionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/dynamic/DynamicSectionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/relocations/RelocationSectionParser.cpp.o -c /app/src/parser/components/sections/relocations/RelocationSectionParser.cpp",
+  "file": "/app/src/parser/components/sections/relocations/RelocationSectionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/relocations/RelocationSectionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/notes/NoteSectionParser.cpp.o -c /app/src/parser/components/sections/notes/NoteSectionParser.cpp",
+  "file": "/app/src/parser/components/sections/notes/NoteSectionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/notes/NoteSectionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/hash/HashSectionParser.cpp.o -c /app/src/parser/components/sections/hash/HashSectionParser.cpp",
+  "file": "/app/src/parser/components/sections/hash/HashSectionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/hash/HashSectionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/hash/GnuHashSectionParser.cpp.o -c /app/src/parser/components/sections/hash/GnuHashSectionParser.cpp",
+  "file": "/app/src/parser/components/sections/hash/GnuHashSectionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/hash/GnuHashSectionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/version/VersionDefinitionParser.cpp.o -c /app/src/parser/components/sections/version/VersionDefinitionParser.cpp",
+  "file": "/app/src/parser/components/sections/version/VersionDefinitionParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/version/VersionDefinitionParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/version/VersionRequirementParser.cpp.o -c /app/src/parser/components/sections/version/VersionRequirementParser.cpp",
+  "file": "/app/src/parser/components/sections/version/VersionRequirementParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/version/VersionRequirementParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/parser/components/sections/strings/StringTableParser.cpp.o -c /app/src/parser/components/sections/strings/StringTableParser.cpp",
+  "file": "/app/src/parser/components/sections/strings/StringTableParser.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/parser/components/sections/strings/StringTableParser.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/ElfBuilder.cpp.o -c /app/src/builder/ElfBuilder.cpp",
+  "file": "/app/src/builder/ElfBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/ElfBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/headers/EhdrBuilder.cpp.o -c /app/src/builder/components/headers/EhdrBuilder.cpp",
+  "file": "/app/src/builder/components/headers/EhdrBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/headers/EhdrBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/headers/PhdrBuilder.cpp.o -c /app/src/builder/components/headers/PhdrBuilder.cpp",
+  "file": "/app/src/builder/components/headers/PhdrBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/headers/PhdrBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/headers/ShdrBuilder.cpp.o -c /app/src/builder/components/headers/ShdrBuilder.cpp",
+  "file": "/app/src/builder/components/headers/ShdrBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/headers/ShdrBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/SectionBuilder.cpp.o -c /app/src/builder/components/sections/SectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/SectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/SectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/strings/StringTableBuilder.cpp.o -c /app/src/builder/components/sections/strings/StringTableBuilder.cpp",
+  "file": "/app/src/builder/components/sections/strings/StringTableBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/strings/StringTableBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/symbols/SymbolTableBuilder.cpp.o -c /app/src/builder/components/sections/symbols/SymbolTableBuilder.cpp",
+  "file": "/app/src/builder/components/sections/symbols/SymbolTableBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/symbols/SymbolTableBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/dynamic/DynamicSectionBuilder.cpp.o -c /app/src/builder/components/sections/dynamic/DynamicSectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/dynamic/DynamicSectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/dynamic/DynamicSectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/hash/HashSectionBuilder.cpp.o -c /app/src/builder/components/sections/hash/HashSectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/hash/HashSectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/hash/HashSectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/hash/GnuHashSectionBuilder.cpp.o -c /app/src/builder/components/sections/hash/GnuHashSectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/hash/GnuHashSectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/hash/GnuHashSectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/notes/NoteSectionBuilder.cpp.o -c /app/src/builder/components/sections/notes/NoteSectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/notes/NoteSectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/notes/NoteSectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/version/VersionDefinitionBuilder.cpp.o -c /app/src/builder/components/sections/version/VersionDefinitionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/version/VersionDefinitionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/version/VersionDefinitionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/version/VersionRequirementBuilder.cpp.o -c /app/src/builder/components/sections/version/VersionRequirementBuilder.cpp",
+  "file": "/app/src/builder/components/sections/version/VersionRequirementBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/version/VersionRequirementBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/components/sections/relocations/RelocationSectionBuilder.cpp.o -c /app/src/builder/components/sections/relocations/RelocationSectionBuilder.cpp",
+  "file": "/app/src/builder/components/sections/relocations/RelocationSectionBuilder.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/components/sections/relocations/RelocationSectionBuilder.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/builder/layout/LayoutManager.cpp.o -c /app/src/builder/layout/LayoutManager.cpp",
+  "file": "/app/src/builder/layout/LayoutManager.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/builder/layout/LayoutManager.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/SectionFactory.cpp.o -c /app/src/factory/SectionFactory.cpp",
+  "file": "/app/src/factory/SectionFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/SectionFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/SegmentFactory.cpp.o -c /app/src/factory/SegmentFactory.cpp",
+  "file": "/app/src/factory/SegmentFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/SegmentFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/SymbolFactory.cpp.o -c /app/src/factory/SymbolFactory.cpp",
+  "file": "/app/src/factory/SymbolFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/SymbolFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/RelocationFactory.cpp.o -c /app/src/factory/RelocationFactory.cpp",
+  "file": "/app/src/factory/RelocationFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/RelocationFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/DynamicEntryFactory.cpp.o -c /app/src/factory/DynamicEntryFactory.cpp",
+  "file": "/app/src/factory/DynamicEntryFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/DynamicEntryFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/NoteFactory.cpp.o -c /app/src/factory/NoteFactory.cpp",
+  "file": "/app/src/factory/NoteFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/NoteFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/factory/VersionFactory.cpp.o -c /app/src/factory/VersionFactory.cpp",
+  "file": "/app/src/factory/VersionFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/factory/VersionFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/arch/ArchFactory.cpp.o -c /app/src/arch/ArchFactory.cpp",
+  "file": "/app/src/arch/ArchFactory.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/arch/ArchFactory.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/arch/x86_64/X86_64Handler.cpp.o -c /app/src/arch/x86_64/X86_64Handler.cpp",
+  "file": "/app/src/arch/x86_64/X86_64Handler.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/arch/x86_64/X86_64Handler.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/arch/aarch64/AArch64Handler.cpp.o -c /app/src/arch/aarch64/AArch64Handler.cpp",
+  "file": "/app/src/arch/aarch64/AArch64Handler.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/arch/aarch64/AArch64Handler.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/arch/riscv/RiscvHandler.cpp.o -c /app/src/arch/riscv/RiscvHandler.cpp",
+  "file": "/app/src/arch/riscv/RiscvHandler.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/arch/riscv/RiscvHandler.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/validator/components/EhdrValidator.cpp.o -c /app/src/validator/components/EhdrValidator.cpp",
+  "file": "/app/src/validator/components/EhdrValidator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/validator/components/EhdrValidator.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/validator/components/PhdrValidator.cpp.o -c /app/src/validator/components/PhdrValidator.cpp",
+  "file": "/app/src/validator/components/PhdrValidator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/validator/components/PhdrValidator.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/validator/components/ShdrValidator.cpp.o -c /app/src/validator/components/ShdrValidator.cpp",
+  "file": "/app/src/validator/components/ShdrValidator.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/validator/components/ShdrValidator.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/transform/actions/StripSymbolsAction.cpp.o -c /app/src/transform/actions/StripSymbolsAction.cpp",
+  "file": "/app/src/transform/actions/StripSymbolsAction.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/transform/actions/StripSymbolsAction.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/libelfparser.dir/transform/actions/RemoveSectionAction.cpp.o -c /app/src/transform/actions/RemoveSectionAction.cpp",
+  "file": "/app/src/transform/actions/RemoveSectionAction.cpp",
+  "output": "src/CMakeFiles/libelfparser.dir/transform/actions/RemoveSectionAction.cpp.o"
+},
+{
+  "directory": "/app/src",
+  "command": "/usr/bin/c++  -I/app/include -std=gnu++17 -o CMakeFiles/elf_parser_cli.dir/main.cpp.o -c /app/src/main.cpp",
+  "file": "/app/src/main.cpp",
+  "output": "src/CMakeFiles/elf_parser_cli.dir/main.cpp.o"
+},
+{
+  "directory": "/app/tests",
+  "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/main_test.cpp.o -c /app/tests/main_test.cpp",
+  "file": "/app/tests/main_test.cpp",
+  "output": "tests/CMakeFiles/run_tests.dir/main_test.cpp.o"
+},
+{
+  "directory": "/app/tests",
+  "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/TestElfParser.cpp.o -c /app/tests/TestElfParser.cpp",
+  "file": "/app/tests/TestElfParser.cpp",
+  "output": "tests/CMakeFiles/run_tests.dir/TestElfParser.cpp.o"
+},
+{
+  "directory": "/app/tests",
+  "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/TestElfBuilder.cpp.o -c /app/tests/TestElfBuilder.cpp",
+  "file": "/app/tests/TestElfBuilder.cpp",
+  "output": "tests/CMakeFiles/run_tests.dir/TestElfBuilder.cpp.o"
+},
+{
+  "directory": "/app/tests",
+  "command": "/usr/bin/c++  -I/app/include -I/app/tests -std=gnu++17 -o CMakeFiles/run_tests.dir/TestBuilderComponents.cpp.o -c /app/tests/TestBuilderComponents.cpp",
+  "file": "/app/tests/TestBuilderComponents.cpp",
+  "output": "tests/CMakeFiles/run_tests.dir/TestBuilderComponents.cpp.o"
+}
+]
