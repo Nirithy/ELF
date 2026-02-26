@@ -7,6 +7,8 @@
 #include "elfparser/plugins/core/PluginContext.h"
 #include "elfparser/common/Types.h"
 #include "elfparser/plugins/events/EventDispatcher.h"
+#include "elfparser/plugins/registry/PluginRegistry.h"
+#include "elfparser/plugins/loaders/StaticPluginLoader.h"
 
 namespace ElfParser::Plugins {
 
@@ -22,11 +24,11 @@ namespace ElfParser::Plugins {
         Common::Result Initialize();
 
         /**
-         * @brief Load a plugin dynamically (if supported) or register a static plugin.
-         * @param plugin The plugin instance to take ownership of.
+         * @brief Register a plugin instance.
+         * @param plugin The plugin instance.
          * @return Result indicating success or failure.
          */
-        Common::Result RegisterPlugin(std::unique_ptr<IPlugin> plugin);
+        Common::Result RegisterPlugin(std::shared_ptr<IPlugin> plugin);
 
         /**
          * @brief Initialize all registered plugins.
@@ -49,9 +51,9 @@ namespace ElfParser::Plugins {
         std::shared_ptr<Events::EventDispatcher> GetEventDispatcher() const { return m_eventDispatcher; }
 
     private:
-        std::vector<std::unique_ptr<IPlugin>> m_plugins;
         std::shared_ptr<Events::EventDispatcher> m_eventDispatcher;
         std::unique_ptr<PluginContext> m_context;
+        std::unique_ptr<Loaders::StaticPluginLoader> m_staticLoader;
         bool m_initialized = false;
     };
 

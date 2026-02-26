@@ -5,3 +5,10 @@ build/
 *.so
 elf_parser_cli
 .DS_Store
+CMakeCache.txt
+CMakeFiles/
+Makefile
+bin/
+lib/
+compile_commands.json
+*.cmake

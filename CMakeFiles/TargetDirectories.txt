@@ -1,0 +1,9 @@
+/app/CMakeFiles/edit_cache.dir
+/app/CMakeFiles/rebuild_cache.dir
+/app/src/CMakeFiles/libelfparser.dir
+/app/src/CMakeFiles/elf_parser_cli.dir
+/app/src/CMakeFiles/edit_cache.dir
+/app/src/CMakeFiles/rebuild_cache.dir
+/app/tests/CMakeFiles/run_tests.dir
+/app/tests/CMakeFiles/edit_cache.dir
+/app/tests/CMakeFiles/rebuild_cache.dir
