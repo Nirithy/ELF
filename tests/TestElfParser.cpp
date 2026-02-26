@@ -89,5 +89,15 @@ TEST_CASE(TestBasicElfParsing) {
     ASSERT_EQ(phdrs.size(), 1);
     ASSERT_EQ(phdrs[0].p_type, 1); // Load
 
+    // Verify new accessors (should be empty for this dummy file)
+    const auto& syms = parser.GetSymbols();
+    ASSERT_EQ(syms.size(), 0);
+
+    const auto& dyns = parser.GetDynamicEntries();
+    ASSERT_EQ(dyns.size(), 0);
+
+    const auto& rels = parser.GetRelocations();
+    ASSERT_EQ(rels.size(), 0);
+
     std::remove(filename.c_str());
 }

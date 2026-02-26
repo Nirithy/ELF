@@ -3,9 +3,12 @@ set(LIB_SOURCES
     utils/Logger.cpp
     io/BinaryReader.cpp
     parser/ElfParser.cpp
-    parser/components/HeaderParser.cpp
-    parser/components/SectionParser.cpp
-    parser/components/SegmentParser.cpp
+    parser/components/headers/EhdrParser.cpp
+    parser/components/headers/PhdrParser.cpp
+    parser/components/headers/ShdrParser.cpp
+    parser/components/sections/SymbolTableParser.cpp
+    parser/components/sections/DynamicSectionParser.cpp
+    parser/components/sections/RelocationSectionParser.cpp
 )
 
 # Create the core library

@@ -1,10 +1,10 @@
-#include "elfparser/parser/components/SectionParser.h"
+#include "elfparser/parser/components/headers/ShdrParser.h"
 #include "elfparser/utils/ElfSwap.h"
 #include <iostream>
 
 namespace ElfParser::Parser::Components {
 
-    Common::Result SectionParser::ParseHeaders(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, std::vector<Model::Elf64_Shdr>& sections) {
+    Common::Result ShdrParser::ParseHeaders(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, std::vector<Model::Elf64_Shdr>& sections) {
         if (header.e_shoff == 0 || header.e_shnum == 0) {
             sections.clear();
             return Common::Result::Ok();
@@ -26,9 +26,8 @@ namespace ElfParser::Parser::Components {
         return Common::Result::Ok();
     }
 
-    Common::Result SectionParser::ParseStringTable(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, const std::vector<Model::Elf64_Shdr>& sections, std::vector<char>& strTab) {
+    Common::Result ShdrParser::ParseStringTable(IO::BinaryReader& reader, const Model::Elf64_Ehdr& header, const std::vector<Model::Elf64_Shdr>& sections, std::vector<char>& strTab) {
         if (header.e_shstrndx == 0) {
-             // SHN_UNDEF is 0. If it's 0, there's no string table.
              strTab.clear();
              return Common::Result::Ok();
         }
@@ -39,7 +38,6 @@ namespace ElfParser::Parser::Components {
 
         const auto& shstrtab_hdr = sections[header.e_shstrndx];
 
-        // Safety check on size (e.g., 100MB limit)
         if (shstrtab_hdr.sh_size > 100 * 1024 * 1024) {
              return Common::Result::Fail(Common::StatusCode::InvalidFormat, "String table too large");
         }
@@ -61,7 +59,7 @@ namespace ElfParser::Parser::Components {
         return Common::Result::Ok();
     }
 
-    std::string SectionParser::GetSectionName(const std::vector<char>& strTab, uint32_t offset) {
+    std::string ShdrParser::GetSectionName(const std::vector<char>& strTab, uint32_t offset) {
         if (strTab.empty() || offset >= strTab.size()) return "";
 
         size_t len = 0;

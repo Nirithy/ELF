@@ -22,6 +22,10 @@ namespace ElfParser::Parser {
         const std::vector<Model::Elf64_Phdr>& GetProgramHeaders() const { return m_phdrs; }
         const std::vector<Model::Elf64_Shdr>& GetSectionHeaders() const { return m_shdrs; }
 
+        const std::vector<Model::Elf64_Sym>& GetSymbols() const { return m_symbols; }
+        const std::vector<Model::Elf64_Dyn>& GetDynamicEntries() const { return m_dynamicEntries; }
+        const std::vector<Model::Elf64_Rela>& GetRelocations() const { return m_relocations; }
+
         // Helper to get section name from the Section Header String Table
         std::string GetSectionName(uint32_t offset) const;
 
@@ -35,6 +39,11 @@ namespace ElfParser::Parser {
 
         // Section header string table raw data
         std::vector<char> m_shstrtab;
+
+        // Parsed data
+        std::vector<Model::Elf64_Sym> m_symbols;
+        std::vector<Model::Elf64_Dyn> m_dynamicEntries;
+        std::vector<Model::Elf64_Rela> m_relocations;
     };
 
 }

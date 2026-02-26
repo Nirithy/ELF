@@ -6,7 +6,7 @@
 
 namespace ElfParser::Parser::Components {
 
-    class HeaderParser {
+    class EhdrParser {
     public:
         // Reads and validates the ELF Header.
         // Sets the endianness of the reader based on the header.
