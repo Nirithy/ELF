@@ -2,9 +2,9 @@
 #include "elfparser/parser/components/headers/EhdrParser.h"
 #include "elfparser/parser/components/headers/PhdrParser.h"
 #include "elfparser/parser/components/headers/ShdrParser.h"
-#include "elfparser/parser/components/sections/SymbolTableParser.h"
-#include "elfparser/parser/components/sections/DynamicSectionParser.h"
-#include "elfparser/parser/components/sections/RelocationSectionParser.h"
+#include "elfparser/parser/components/sections/symbols/SymbolTableParser.h"
+#include "elfparser/parser/components/sections/dynamic/DynamicSectionParser.h"
+#include "elfparser/parser/components/sections/relocations/RelocationSectionParser.h"
 #include "elfparser/utils/Logger.h"
 
 namespace ElfParser::Parser {

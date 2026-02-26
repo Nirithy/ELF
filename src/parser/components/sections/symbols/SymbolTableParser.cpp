@@ -1,4 +1,4 @@
-#include "elfparser/parser/components/sections/SymbolTableParser.h"
+#include "elfparser/parser/components/sections/symbols/SymbolTableParser.h"
 #include "elfparser/utils/ElfSwap.h"
 #include "elfparser/utils/Logger.h"
 

@@ -7,9 +7,9 @@ set(LIB_SOURCES
     parser/components/headers/EhdrParser.cpp
     parser/components/headers/PhdrParser.cpp
     parser/components/headers/ShdrParser.cpp
-    parser/components/sections/SymbolTableParser.cpp
-    parser/components/sections/DynamicSectionParser.cpp
-    parser/components/sections/RelocationSectionParser.cpp
+    parser/components/sections/symbols/SymbolTableParser.cpp
+    parser/components/sections/dynamic/DynamicSectionParser.cpp
+    parser/components/sections/relocations/RelocationSectionParser.cpp
     parser/components/sections/notes/NoteSectionParser.cpp
     parser/components/sections/hash/HashSectionParser.cpp
     parser/components/sections/hash/GnuHashSectionParser.cpp
@@ -33,6 +33,11 @@ set(LIB_SOURCES
     builder/layout/LayoutManager.cpp
     factory/SectionFactory.cpp
     factory/SegmentFactory.cpp
+    factory/SymbolFactory.cpp
+    factory/RelocationFactory.cpp
+    factory/DynamicEntryFactory.cpp
+    factory/NoteFactory.cpp
+    factory/VersionFactory.cpp
 )
 
 # Create the core library

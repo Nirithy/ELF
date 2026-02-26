@@ -1,4 +1,4 @@
-#include "elfparser/parser/components/sections/DynamicSectionParser.h"
+#include "elfparser/parser/components/sections/dynamic/DynamicSectionParser.h"
 #include "elfparser/utils/ElfSwap.h"
 
 namespace ElfParser::Parser::Components {
